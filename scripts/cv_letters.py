@@ -18,7 +18,7 @@ class LetterCollector:
             if not self.cap.isOpened():
                 raise RuntimeError("Camera did not open")
 
-        self.output_file = "/home/rawan/catkin_ws/src/Robot-Competition/computer vision/output_file/results.txt"
+        self.output_file = "/home/hajer/catkin_ws/src/my_robot_package/computer vision/output_file/results.txt"
 
     @staticmethod
     def is_green_background(frame, bbox, expand=10, green_thresh=0.12):

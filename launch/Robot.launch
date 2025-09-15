@@ -4,5 +4,10 @@
           pkg="my_robot_package"
           type="control_robot.py"
           output="screen"/>
+
+    <node name="vision_node"
+          pkg="my_robot_package"
+          type="main.py"
+          output="screen" />
 </launch>
 

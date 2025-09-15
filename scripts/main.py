@@ -1,12 +1,14 @@
-from cv_signs import Sign_Node
+#!/usr/bin/env python3
+
+from cv_signs import SignDetector
 from cv_letters import LetterCollector
 import cv2
 import rospy 
 from std_msgs.msg import String
 
 if __name__ == "__main__":
-    sign_model = "/home/rawan/catkin_ws/src/Robot-Competition/models/SignModel.pt"
-    alphabet_model = "/home/rawan/catkin_ws/src/Robot-Competition/models/alphabet.pt"
+    sign_model = "/home/hajer/catkin_ws/src/my_robot_package/models/SignModel.pt"
+    alphabet_model = "/home/hajer/catkin_ws/src/my_robot_package/models/alphabet.pt"
 
     # Main camera
     main_cap = cv2.VideoCapture(0)
@@ -14,7 +16,7 @@ if __name__ == "__main__":
         raise RuntimeError("Main camera could not be opened")
 
     # Detectors using the same camera
-    sign_detector = Sign_Node(sign_model, cap=main_cap)
+    sign_detector = SignDetector(sign_model, cap=main_cap)
     alphabet_detector = LetterCollector(alphabet_model, cap=main_cap)
 
     detection_window_open = False

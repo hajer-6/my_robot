@@ -64,7 +64,7 @@ class SignDetector:
 
 
 if __name__ == "__main__":
-    model_path = "/home/rawan/catkin_ws/src/Robot-Competition/models/SignModel.pt"
+    model_path = "/home/rawan/catkin_ws/src/my_robot_package/models/SignModel.pt"
     detector = SignDetector(model_path)
     detector.run()
 
