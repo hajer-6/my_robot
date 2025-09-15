@@ -1,0 +1,52 @@
+\hypertarget{SensorIMU_8py}{}\doxysection{Sensor\+I\+M\+U.\+py File Reference}
+\label{SensorIMU_8py}\index{SensorIMU.py@{SensorIMU.py}}
+
+
+R\+OS I\+MU node for publishing sensor data from B\+N\+O055 I\+MU sensor.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classSensorIMU_1_1SensorIMU}{Sensor\+I\+M\+U.\+Sensor\+I\+MU}}
+\item 
+class \mbox{\hyperlink{classSensorIMU_1_1ROSIMU}{Sensor\+I\+M\+U.\+R\+O\+S\+I\+MU}}
+\begin{DoxyCompactList}\small\item\em Extends \mbox{\hyperlink{classSensorIMU_1_1SensorIMU}{Sensor\+I\+MU}} to publish data as a R\+OS node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceSensorIMU}{Sensor\+I\+MU}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceSensorIMU_a6183b46a5e8a468bfea15d53920f42e9}{Sensor\+I\+M\+U.\+set\+\_\+imu\+\_\+configuration}} (self)
+\begin{DoxyCompactList}\small\item\em Configures the I\+MU with the necessary settings and modes. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_ac646165254a4488e080794bdfe6a97be}{Sensor\+I\+M\+U.\+callback\+\_\+calibration\+\_\+imu\+\_\+status}} (self, req)
+\begin{DoxyCompactList}\small\item\em Callback function to check the I\+MU calibration status. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_a8afda9eebe2c2ccf6af1b85a4f02f027}{Sensor\+I\+M\+U.\+load\+\_\+calibration\+\_\+from\+\_\+file}} (self)
+\begin{DoxyCompactList}\small\item\em Loads I\+MU calibration data from a file. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_a190abb72cde71851da8b653f226aa53e}{Sensor\+I\+M\+U.\+should\+\_\+update\+\_\+imu}} (self)
+\begin{DoxyCompactList}\small\item\em Determines if the I\+MU data needs to be updated based on a fixed update frequency. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_a307dbf14302c485743b61573e5a60987}{Sensor\+I\+M\+U.\+update\+\_\+angles}} (self)
+\begin{DoxyCompactList}\small\item\em Updates the yaw, pitch, and roll angles of the I\+MU sensor. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_a1d9a641ac9a33e4f470bef07ccbb7838}{Sensor\+I\+M\+U.\+update\+\_\+imu}} (self)
+\begin{DoxyCompactList}\small\item\em Fetches updated I\+MU data from the sensor. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_a68d1aa2218826b73a9bc8a069306ecda}{Sensor\+I\+M\+U.\+convert\+\_\+angle}} (self, angle)
+\begin{DoxyCompactList}\small\item\em Converts an angle to a value within 0 to 360 degrees. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_a6734f909b586db86c1b2c7c04ba3ddb3}{Sensor\+I\+M\+U.\+calculate\+\_\+yaw\+\_\+pitch\+\_\+roll}} (self, quaternion)
+\begin{DoxyCompactList}\small\item\em Calculates yaw, pitch, and roll from quaternion data. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_a8a55cf37a92cae87cfc81035d5457217}{Sensor\+I\+M\+U.\+get\+\_\+imu\+\_\+message}} (self)
+\begin{DoxyCompactList}\small\item\em Generates the R\+OS I\+MU message with the updated sensor data. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_aca91a368da1c02a2cadc7a319d27e0b3}{Sensor\+I\+M\+U.\+get\+\_\+yaw}} (self)
+\begin{DoxyCompactList}\small\item\em Fetches the current relative yaw value. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_ad2d76801911d3819023dd447ae74edb2}{Sensor\+I\+M\+U.\+get\+\_\+pitch}} (self)
+\begin{DoxyCompactList}\small\item\em Fetches the current relative pitch value. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceSensorIMU_ad86c8e5eb2b6641a5f21eebe7e65f032}{Sensor\+I\+M\+U.\+get\+\_\+roll}} (self)
+\begin{DoxyCompactList}\small\item\em Fetches the current relative roll value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+R\+OS I\+MU node for publishing sensor data from B\+N\+O055 I\+MU sensor. 
+
+This file implements classes to initialize, configure, and publish I\+MU data This file have two class one with ros and other without ros 

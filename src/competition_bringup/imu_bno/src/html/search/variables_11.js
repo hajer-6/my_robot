@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['vector_5facceleration_344',['VECTOR_ACCELERATION',['../namespaceimu__bno055__api.html#a2fa661700e427a6bbea6ccfa3f5aefa3',1,'imu_bno055_api']]],
+  ['vector_5facceleration_5flength_345',['VECTOR_ACCELERATION_LENGTH',['../namespaceimu__bno055__api.html#ac9d9848e3de7473269ef9f0828eec170',1,'imu_bno055_api']]],
+  ['vector_5fall_5fdata_346',['VECTOR_ALL_DATA',['../namespaceimu__bno055__api.html#a01b97bd094d027538af662b9c6dbb9e6',1,'imu_bno055_api']]],
+  ['vector_5fall_5fdata_5flength_347',['VECTOR_ALL_DATA_LENGTH',['../namespaceimu__bno055__api.html#ac1bcb528a53a9a317234eb9583833590',1,'imu_bno055_api']]],
+  ['vector_5feuler_5forientation_348',['VECTOR_EULER_ORIENTATION',['../namespaceimu__bno055__api.html#a60f2b5167873147216d7ef3a0a8624bf',1,'imu_bno055_api']]],
+  ['vector_5feuler_5forientation_5flength_349',['VECTOR_EULER_ORIENTATION_LENGTH',['../namespaceimu__bno055__api.html#a738fea0e52ee3d3853c34020bdd538ce',1,'imu_bno055_api']]],
+  ['vector_5fgravity_350',['VECTOR_GRAVITY',['../namespaceimu__bno055__api.html#ac8c1335e1f41777d170d1c647d9dd1be',1,'imu_bno055_api']]],
+  ['vector_5fgravity_5flength_351',['VECTOR_GRAVITY_LENGTH',['../namespaceimu__bno055__api.html#a0ca0bd69cb5bf89dfe3b1cd2a9411367',1,'imu_bno055_api']]],
+  ['vector_5fgyroscope_352',['VECTOR_GYROSCOPE',['../namespaceimu__bno055__api.html#a6af9318843d8292ec4089f9a9c5831df',1,'imu_bno055_api']]],
+  ['vector_5fgyroscope_5flength_353',['VECTOR_GYROSCOPE_LENGTH',['../namespaceimu__bno055__api.html#aaa9febc70fe4c204a0bad518e210711f',1,'imu_bno055_api']]],
+  ['vector_5flinear_5facceleration_354',['VECTOR_LINEAR_ACCELERATION',['../namespaceimu__bno055__api.html#a5e2b88f4b8cb87201ef81b3de53d7609',1,'imu_bno055_api']]],
+  ['vector_5flinear_5facceleration_5flength_355',['VECTOR_LINEAR_ACCELERATION_LENGTH',['../namespaceimu__bno055__api.html#a8bdd44cdfa89e8e0ceecdcb2ff26d578',1,'imu_bno055_api']]],
+  ['vector_5fmagnetometer_356',['VECTOR_MAGNETOMETER',['../namespaceimu__bno055__api.html#a9af3c21b4f33eefd74608239b24a8a9f',1,'imu_bno055_api']]],
+  ['vector_5fmagnetometer_5flength_357',['VECTOR_MAGNETOMETER_LENGTH',['../namespaceimu__bno055__api.html#a87ad5e2460479ec4704bf12d0176c34d',1,'imu_bno055_api']]],
+  ['vector_5fquaternion_5forientation_358',['VECTOR_QUATERNION_ORIENTATION',['../namespaceimu__bno055__api.html#a04afe71681b3df62bc3fd302ef23aac5',1,'imu_bno055_api']]],
+  ['vector_5fquaternion_5forientation_5flength_359',['VECTOR_QUATERNION_ORIENTATION_LENGTH',['../namespaceimu__bno055__api.html#a8fb1a7274d1d5874dc40afcd76b1749a',1,'imu_bno055_api']]]
+];

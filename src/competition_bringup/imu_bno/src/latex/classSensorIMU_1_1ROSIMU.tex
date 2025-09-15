@@ -1,0 +1,147 @@
+\hypertarget{classSensorIMU_1_1ROSIMU}{}\doxysection{Sensor\+I\+M\+U.\+R\+O\+S\+I\+MU Class Reference}
+\label{classSensorIMU_1_1ROSIMU}\index{SensorIMU.ROSIMU@{SensorIMU.ROSIMU}}
+
+
+Extends \mbox{\hyperlink{classSensorIMU_1_1SensorIMU}{Sensor\+I\+MU}} to publish data as a R\+OS node.  
+
+
+
+
+Inheritance diagram for Sensor\+I\+M\+U.\+R\+O\+S\+I\+MU\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{classSensorIMU_1_1ROSIMU__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Sensor\+I\+M\+U.\+R\+O\+S\+I\+MU\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{classSensorIMU_1_1ROSIMU__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classSensorIMU_1_1ROSIMU_a4eae1e984484723b990e8509669ea90f}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self, \mbox{\hyperlink{classSensorIMU_1_1SensorIMU_a951b917a00cb5451322d7e5b3d45933e}{imu}}, \mbox{\hyperlink{classSensorIMU_1_1SensorIMU_aac292c769605106ad866f6160c869712}{imu\+\_\+msg}})
+\begin{DoxyCompactList}\small\item\em Constructor for initializing \mbox{\hyperlink{classSensorIMU_1_1ROSIMU}{R\+O\+S\+I\+MU}} instance. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{classSensorIMU_1_1ROSIMU_acb1c94fb5bbc78ddbab6a986ba2fce3a}{publish\+\_\+imu}} (self)
+\begin{DoxyCompactList}\small\item\em Publishes the I\+MU message to the \textquotesingle{}imu/data\textquotesingle{} topic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSensorIMU_1_1ROSIMU_ac9a54cc5d3a3d7875b1a6173b5a33160}{node\+\_\+name}}
+\item 
+\mbox{\hyperlink{classSensorIMU_1_1ROSIMU_aeebd5aae2392bf1d6ae83c4423d5fc59}{pub\+\_\+imu\+\_\+msg}}
+\item 
+\mbox{\hyperlink{classSensorIMU_1_1ROSIMU_a8a9200e69b4dcb9a78b854537f3ca32c}{imu\+\_\+msg\+\_\+seq\+\_\+counter}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Extends \mbox{\hyperlink{classSensorIMU_1_1SensorIMU}{Sensor\+I\+MU}} to publish data as a R\+OS node. 
+
+Manages publishing the I\+MU data as R\+OS messages on the topic \textquotesingle{}imu/data\textquotesingle{}. 
+
+Definition at line 275 of file Sensor\+I\+M\+U.\+py.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSensorIMU_1_1ROSIMU_a4eae1e984484723b990e8509669ea90f}\label{classSensorIMU_1_1ROSIMU_a4eae1e984484723b990e8509669ea90f}} 
+\index{SensorIMU.ROSIMU@{SensorIMU.ROSIMU}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!SensorIMU.ROSIMU@{SensorIMU.ROSIMU}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def Sensor\+I\+M\+U.\+R\+O\+S\+I\+M\+U.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{imu,  }\item[{}]{imu\+\_\+msg }\end{DoxyParamCaption})}
+
+
+
+Constructor for initializing \mbox{\hyperlink{classSensorIMU_1_1ROSIMU}{R\+O\+S\+I\+MU}} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em imu} & Reference to the Bosch\+I\+MU device object \\
+\hline
+{\em imu\+\_\+msg} & Reference to the I\+MU device object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 279 of file Sensor\+I\+M\+U.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{279     \textcolor{keyword}{def }\mbox{\hyperlink{classSensorIMU_1_1ROSIMU_a4eae1e984484723b990e8509669ea90f}{\_\_init\_\_}}(self,imu,imu\_msg):}
+\DoxyCodeLine{280         super().\mbox{\hyperlink{classSensorIMU_1_1ROSIMU_a4eae1e984484723b990e8509669ea90f}{\_\_init\_\_}}(imu,imu\_msg)}
+\DoxyCodeLine{281         self.node\_name = rospy.get\_name()}
+\DoxyCodeLine{282         self.pub\_imu\_msg = rospy.Publisher(\textcolor{stringliteral}{'imu/data'}, Imu, queue\_size=1)}
+\DoxyCodeLine{283         self.imu\_msg\_seq\_counter = 0}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSensorIMU_1_1ROSIMU_acb1c94fb5bbc78ddbab6a986ba2fce3a}\label{classSensorIMU_1_1ROSIMU_acb1c94fb5bbc78ddbab6a986ba2fce3a}} 
+\index{SensorIMU.ROSIMU@{SensorIMU.ROSIMU}!publish\_imu@{publish\_imu}}
+\index{publish\_imu@{publish\_imu}!SensorIMU.ROSIMU@{SensorIMU.ROSIMU}}
+\doxysubsubsection{\texorpdfstring{publish\_imu()}{publish\_imu()}}
+{\footnotesize\ttfamily def Sensor\+I\+M\+U.\+R\+O\+S\+I\+M\+U.\+publish\+\_\+imu (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Publishes the I\+MU message to the \textquotesingle{}imu/data\textquotesingle{} topic. 
+
+
+
+Definition at line 285 of file Sensor\+I\+M\+U.\+py.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{285     \textcolor{keyword}{def }\mbox{\hyperlink{classSensorIMU_1_1ROSIMU_acb1c94fb5bbc78ddbab6a986ba2fce3a}{publish\_imu}}(self):}
+\DoxyCodeLine{286         self.get\_imu\_message()}
+\DoxyCodeLine{287         self.imu\_msg.header.seq = self.imu\_msg\_seq\_counter}
+\DoxyCodeLine{288         self.pub\_imu\_msg.publish(self.imu\_msg)}
+\DoxyCodeLine{289         self.imu\_msg\_seq\_counter += 1}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSensorIMU_1_1ROSIMU_a8a9200e69b4dcb9a78b854537f3ca32c}\label{classSensorIMU_1_1ROSIMU_a8a9200e69b4dcb9a78b854537f3ca32c}} 
+\index{SensorIMU.ROSIMU@{SensorIMU.ROSIMU}!imu\_msg\_seq\_counter@{imu\_msg\_seq\_counter}}
+\index{imu\_msg\_seq\_counter@{imu\_msg\_seq\_counter}!SensorIMU.ROSIMU@{SensorIMU.ROSIMU}}
+\doxysubsubsection{\texorpdfstring{imu\_msg\_seq\_counter}{imu\_msg\_seq\_counter}}
+{\footnotesize\ttfamily Sensor\+I\+M\+U.\+R\+O\+S\+I\+M\+U.\+imu\+\_\+msg\+\_\+seq\+\_\+counter}
+
+
+
+Definition at line 283 of file Sensor\+I\+M\+U.\+py.
+
+\mbox{\Hypertarget{classSensorIMU_1_1ROSIMU_ac9a54cc5d3a3d7875b1a6173b5a33160}\label{classSensorIMU_1_1ROSIMU_ac9a54cc5d3a3d7875b1a6173b5a33160}} 
+\index{SensorIMU.ROSIMU@{SensorIMU.ROSIMU}!node\_name@{node\_name}}
+\index{node\_name@{node\_name}!SensorIMU.ROSIMU@{SensorIMU.ROSIMU}}
+\doxysubsubsection{\texorpdfstring{node\_name}{node\_name}}
+{\footnotesize\ttfamily Sensor\+I\+M\+U.\+R\+O\+S\+I\+M\+U.\+node\+\_\+name}
+
+
+
+Definition at line 281 of file Sensor\+I\+M\+U.\+py.
+
+\mbox{\Hypertarget{classSensorIMU_1_1ROSIMU_aeebd5aae2392bf1d6ae83c4423d5fc59}\label{classSensorIMU_1_1ROSIMU_aeebd5aae2392bf1d6ae83c4423d5fc59}} 
+\index{SensorIMU.ROSIMU@{SensorIMU.ROSIMU}!pub\_imu\_msg@{pub\_imu\_msg}}
+\index{pub\_imu\_msg@{pub\_imu\_msg}!SensorIMU.ROSIMU@{SensorIMU.ROSIMU}}
+\doxysubsubsection{\texorpdfstring{pub\_imu\_msg}{pub\_imu\_msg}}
+{\footnotesize\ttfamily Sensor\+I\+M\+U.\+R\+O\+S\+I\+M\+U.\+pub\+\_\+imu\+\_\+msg}
+
+
+
+Definition at line 282 of file Sensor\+I\+M\+U.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{SensorIMU_8py}{Sensor\+I\+M\+U.\+py}}\end{DoxyCompactItemize}

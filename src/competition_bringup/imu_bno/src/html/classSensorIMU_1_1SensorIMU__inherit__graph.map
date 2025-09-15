@@ -1,0 +1,4 @@
+<map id="SensorIMU.SensorIMU" name="SensorIMU.SensorIMU">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,172,32"/>
+<area shape="rect" id="node2" href="$classSensorIMU_1_1ROSIMU.html" title="Extends SensorIMU to publish data as a ROS node." alt="" coords="14,80,163,107"/>
+</map>

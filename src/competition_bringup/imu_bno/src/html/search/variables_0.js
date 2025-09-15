@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['acceleration_5funits_229',['acceleration_units',['../classimu__bno055__api_1_1BoschIMU.html#a5365f75fde2a5241128d1e48070ed00f',1,'imu_bno055_api::BoschIMU']]],
+  ['android_5forientation_230',['ANDROID_ORIENTATION',['../namespaceimu__bno055__api.html#a6e66c8c249f136309c5a4faea54665c7',1,'imu_bno055_api']]],
+  ['angular_5fdeg_5fscale_231',['ANGULAR_DEG_SCALE',['../namespaceimu__bno055__api.html#ad67420cec3db7de3901f113cfffce95c',1,'imu_bno055_api']]],
+  ['angular_5frad_5fscale_232',['ANGULAR_RAD_SCALE',['../namespaceimu__bno055__api.html#a74290c9a630a02fe83c8cee2b0b36e1e',1,'imu_bno055_api']]],
+  ['angular_5fvelocity_5funits_233',['angular_velocity_units',['../classimu__bno055__api_1_1BoschIMU.html#a6609adb2855f10ca22e7e0a562ec0cfb',1,'imu_bno055_api::BoschIMU']]],
+  ['axis_5fmap_5fconfig_234',['AXIS_MAP_CONFIG',['../namespaceimu__bno055__api.html#a10d67e2b7226219b4bc19ff92694b064',1,'imu_bno055_api']]],
+  ['axis_5fmap_5fsign_235',['AXIS_MAP_SIGN',['../namespaceimu__bno055__api.html#af5cf5309e96583e325528f40dd090b6c',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fconfig_5fp0_236',['AXIS_REMAP_CONFIG_P0',['../namespaceimu__bno055__api.html#a2634ab227a221b4c9fbb395f36fe9313',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fconfig_5fp1_237',['AXIS_REMAP_CONFIG_P1',['../namespaceimu__bno055__api.html#ada46a143c4d63630056cae97a288bc51',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fconfig_5fp2_238',['AXIS_REMAP_CONFIG_P2',['../namespaceimu__bno055__api.html#a609cd8a3b7bb7eb1484ff5e2549bb4ff',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fconfig_5fp3_239',['AXIS_REMAP_CONFIG_P3',['../namespaceimu__bno055__api.html#a37724c8bd0ba98bddcf967e10e20e1e1',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fconfig_5fp4_240',['AXIS_REMAP_CONFIG_P4',['../namespaceimu__bno055__api.html#ac59cca4431aa0e1a7813fba9a3ae4ef6',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fconfig_5fp5_241',['AXIS_REMAP_CONFIG_P5',['../namespaceimu__bno055__api.html#a014fde7f36faf5ddc6d3159cee3ca5a8',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fconfig_5fp6_242',['AXIS_REMAP_CONFIG_P6',['../namespaceimu__bno055__api.html#a0d571967a8164689897cddf4ac56c2e5',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fconfig_5fp7_243',['AXIS_REMAP_CONFIG_P7',['../namespaceimu__bno055__api.html#a5a98e8c9ba2eded5007d21a98abe5858',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fsign_5fp0_244',['AXIS_REMAP_SIGN_P0',['../namespaceimu__bno055__api.html#ae5f45733e60a7751bea3d602cf3e1a4c',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fsign_5fp1_245',['AXIS_REMAP_SIGN_P1',['../namespaceimu__bno055__api.html#a3fd2e647995d0aaacf98f130f1b93273',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fsign_5fp2_246',['AXIS_REMAP_SIGN_P2',['../namespaceimu__bno055__api.html#a8c776a91d8b5a1c27feac818a6a332b2',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fsign_5fp3_247',['AXIS_REMAP_SIGN_P3',['../namespaceimu__bno055__api.html#a5a4c32744cdee3b65baa5f267d47ed4e',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fsign_5fp4_248',['AXIS_REMAP_SIGN_P4',['../namespaceimu__bno055__api.html#ad5f8a5b0a9c6721dd232e546004c7889',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fsign_5fp5_249',['AXIS_REMAP_SIGN_P5',['../namespaceimu__bno055__api.html#aa9051fffd7123c84a73f5c18f712fb1f',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fsign_5fp6_250',['AXIS_REMAP_SIGN_P6',['../namespaceimu__bno055__api.html#a1664b3c028994acb2f12e9633b3f72d5',1,'imu_bno055_api']]],
+  ['axis_5fremap_5fsign_5fp7_251',['AXIS_REMAP_SIGN_P7',['../namespaceimu__bno055__api.html#a099562ef548e06f5b1117e7e7a5d7447',1,'imu_bno055_api']]]
+];
