@@ -39,6 +39,16 @@ class SignDetector:
             cv2.putText(frame, f"{label} {conf:.2f}", (x1, y1 - 8),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
         return frame
+    
+    # def get_sign(detector):
+    #     ret, frame = detector.cap.read()
+    #     if not ret:
+    #         return None
+    #     detections = detector.detect_signs(frame)
+    #     if detections:
+    #         return detections[0]  # return first detected sign
+    #     return None
+
 
     def run(self):
         print("Running sign detection... Press 'q' to quit")

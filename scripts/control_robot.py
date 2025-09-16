@@ -3,10 +3,15 @@ import rospy
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Int16, Int16MultiArray
 import math
+# import cv_signs
+
+# model_path = "/home/rawan/catkin_ws/src/my_robot_package/models/SignModel.pt"
+# detector = cv_signs.SignDetector(model_path)
 
 forward_distance = right_distance = left_distance = yaw = moved = 0
 max_velocity = 3
-kp = 1.5
+kp_linear = 1.5
+kp_angular = 1.5
 rotation_tolerance = 2
 
 
@@ -48,12 +53,19 @@ def movement():
         return
 
     # If obstacle ahead
+
+    # sign = cv_signs.get_sign(detector)
     if forward_distance < 5 and moved:
-        turn_angle(90, cmd) # turn left for now, untill we have cv readings
+        # if sign == "LEFT":
+        #     turn_angle(90, cmd)
+        # elif sign == "RIGHT":
+        #     turn_angle(-90, cmd)
+        # else:
+            turn_angle(90, cmd) # turn left for now, untill we have cv readings
 
     else:
         moved = 1
-        cmd.linear.x = min(max_velocity, (forward_distance - 5) * 0.1)
+        cmd.linear.x = min(max_velocity, (forward_distance - 5) * kp_linear)
         cmd.angular.z = 0
         pub.publish(cmd)
     
@@ -69,7 +81,7 @@ def turn_angle(rotation_angle, cmd):
     error = normalize_angle(target_yaw - yaw)
     while not rospy.is_shutdown() and abs(error) > rotation_tolerance: # increase tolerance if it misses it
         error_rad = math.radians(error)
-        p_rotation = error_rad * kp # the p in pid
+        p_rotation = error_rad * kp_angular # the p in pid
         cmd.angular.z = p_rotation
         cmd.linear.x = 0
         pub.publish(cmd)
