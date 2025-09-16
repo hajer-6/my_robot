@@ -2,6 +2,8 @@
 import rospy
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Int16, Int16MultiArray
+from cv_signs import SignDetector 
+
 
 forward_distance = right_distance = left_distance = yaw =  None
 vision_input = ""
@@ -10,8 +12,12 @@ cmd = Twist()
 
 
 kp_rotation = 0.5
-kp_adjust = 1.5
-kp_linear = 0
+
+kp_linear = 1
+
+model_path = "/root/ros_workspace/src/my_robot_package/models/SignModel.pt"
+detector = SignDetector(model_path)
+
 
 
 def ultrasonics_callback(msg):
@@ -30,11 +36,11 @@ def yaw_callback(msg):
     yaw = msg.data
     rospy.loginfo("Yaw: %d", yaw)
 
-def listener():
-    rospy.init_node('robot')
-    rospy.Subscriber('ultrasonics', Int16MultiArray, ultrasonics_callback)
-    rospy.Subscriber('yaw', Int16, yaw_callback)
-    rospy.spin()
+# def listener():
+#     rospy.init_node('robot')
+#     rospy.Subscriber('ultrasonics', Int16MultiArray, ultrasonics_callback)
+#     rospy.Subscriber('yaw', Int16, yaw_callback)
+#     rospy.spin()
 
 
 
@@ -44,12 +50,14 @@ def new_yaw(target_yaw,vision_input):
         target_yaw += 90
     elif vision_input == "right":
         target_yaw -= 90
-    if left_distance > 11:
+    elif left_distance > 15:
         target_yaw += 90
-    elif right_distance > 11 :
+    elif right_distance > 15:
         target_yaw -= 90
     else:
         target_yaw += 180 #just in case we go down a dead end
+
+
     if target_yaw > 180:
         target_yaw -= 360
     elif target_yaw <-180:
@@ -58,25 +66,25 @@ def new_yaw(target_yaw,vision_input):
     return target_yaw
 
 
+
+
 def turn(target_yaw):
     error = target_yaw - yaw
+    if 5>error>-5:
+        error = 0
     cmd.angular.z = error*kp_rotation
 
 
-
-def yaw_adjust(target_yaw):
-    error = left_distance - right_distance
-    target_yaw += error*kp_adjust
-    return target_yaw
-
-
+# kp_adjust = 0
+# def yaw_adjust(target_yaw):
+#     error = left_distance - right_distance
+#     target_yaw += error*kp_adjust
+#     return target_yaw
 
 
+#def error_correction()
 
-
-
-
-def movement():
+def movement(pub):
 
 
     if forward_distance == None:
@@ -98,6 +106,17 @@ def movement():
 
 if __name__ == "__main__":
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
-    listener()
+    rospy.init_node('robot')
+
+    rospy.Subscriber('ultrasonics', Int16MultiArray, ultrasonics_callback)
+    rospy.Subscriber('yaw', Int16, yaw_callback)
+
+    rate = rospy.Rate(10)  # 10 Hz
     while not rospy.is_shutdown():
-       movement()
+        new_dir = detector.get_direction()
+        if new_dir:  # only update if something detected
+            vision_input = new_dir
+            rospy.loginfo(f"Vision says: {vision_input}")
+
+        movement(pub)
+        rate.sleep()

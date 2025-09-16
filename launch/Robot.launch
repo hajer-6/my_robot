@@ -1,13 +1,10 @@
 <launch>
     <!-- Launch PID Controller Node -->
     <node name="robot"
-          pkg="my_robot_package"
-          type="control_robot.py"
+          pkg="my_robot_"
+          type="control.py"
           output="screen"/>
 
-    <node name="vision_node"
-          pkg="my_robot_package"
-          type="main.py"
-          output="screen" />
+
 </launch>
 
