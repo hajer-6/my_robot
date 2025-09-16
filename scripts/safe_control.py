@@ -3,12 +3,8 @@ import rospy
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Int16, Int16MultiArray
 import math
-# import cv_signs
 
-# model_path = "/home/rawan/catkin_ws/src/my_robot_package/models/SignModel.pt"
-# detector = cv_signs.SignDetector(model_path)
-
-forward_distance = right_distance = left_distance = yaw = turned = moved = target_yaw = 0
+forward_distance = right_distance = left_distance = yaw = moved = 0
 max_velocity = 0.8
 kp_linear = 1.5
 
@@ -52,7 +48,7 @@ def ultrasonics_callback(msg):
     right_distance = msg.data[1]
     left_distance = msg.data[2]
     rospy.loginfo("Forward: %f, Right: %f, Left: %f",
-                    forward_distance, right_distance, left_distance)
+    forward_distance, right_distance, left_distance)
 
 def yaw_callback(msg):
     global yaw
@@ -71,12 +67,12 @@ def normalize_angle(angle):
     return ((angle + 180) % 360) - 180
 
 def normalize_yaw(angle):
-    """Keep yaw in [0, 360) degrees"""
+    # Keep yaw in [0, 360) degrees
     return angle % 360
 
 
 def movement():
-    global moved, turned
+    global moved
     cmd = Twist()
 
     # safety check
@@ -87,24 +83,16 @@ def movement():
         return
 
     # If obstacle ahead
-    if forward_distance < 5 and moved:
-        turned = 1
-        turn_angle(90, cmd) # turn left for now, untill we have cv readings
+
+    if forward_distance < 8 and moved:
+        turn_angle(90, cmd) # turn right
 
     else:
         moved = 1
-        error = normalize_angle(target_yaw - yaw)
-        if abs(error) > rotation_tolerance and turned:
-            cmd.linear.x = min(max_velocity, (forward_distance - 8) * kp_linear)
-            error_rad = math.radians(error)
-            control = pid_control(error_rad)
-            cmd.angular.z = control
-        else:
-            cmd.linear.x = min(max_velocity, (forward_distance - 8) * kp_linear)
-            cmd.angular.z = 0
-            
+        cmd.linear.x = min(max_velocity, (forward_distance - 8) * kp_linear)
+        cmd.angular.z = 0
         pub.publish(cmd)
-
+    
 
 
 def turn_angle(rotation_angle, cmd):
@@ -119,9 +107,9 @@ def turn_angle(rotation_angle, cmd):
 
     error = normalize_angle(target_yaw - yaw)
     while not rospy.is_shutdown() and abs(error) > rotation_tolerance: # increase tolerance if it misses it
-        error_rad = math.radians(error)
-        control = pid_control(error_rad)
-        cmd.angular.z = control
+        control = pid_control(error)
+        control_rad = math.radians(control)
+        cmd.angular.z = control_rad
         cmd.linear.x = 0
         pub.publish(cmd)
         turn_rate.sleep()
@@ -131,6 +119,7 @@ def snap_angle(angle_deg):
     # Snap an angle in degrees to the closest of [0, 90, -90, 180]
     targets = [0, 90, -90, 180]
     return min(targets, key=lambda x: abs(angle_deg - x))
+
 
 def main():
     global pub
@@ -149,3 +138,8 @@ if __name__ == "__main__":
 # roslaunch turtlebot3_gazebo turtlebot3_house.launch
 # roslaunch turtlebot3_gazebo turtlebot3_stage_4.launch
 # :~/catkin_ws/src/turtlebot3/turtlebot3_description/urdf
+
+
+# after rotating = check side ultrasonic reading if like old forward one, move slowly with z correction until it is
+
+# check seconds for a full turn, and hard code it using ros.sleep()

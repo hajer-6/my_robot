@@ -9,15 +9,45 @@ import math
 # detector = cv_signs.SignDetector(model_path)
 
 forward_distance = right_distance = left_distance = yaw = moved = 0
-max_velocity = 3
+max_velocity = 0.8
 kp_linear = 1.5
-kp_angular = 1.5
-rotation_tolerance = 2
+
+kp_angular = 0.7
+ki_angular = 0
+kd_angular = 0
+
+rotation_tolerance = 4
+
+last_error = 0
+integral = 0
+dt = 0.1
+
+def pid_control(error):
+    global last_error, dt, integral
+
+    # Proportional
+    p = kp_angular * error
+
+    # Integral
+    integral += error * dt
+    i = ki_angular * integral
+
+    # Derivative
+    derivative = (error - last_error) / dt if dt > 0 else 0
+    d = kd_angular * derivative
+
+    # Save error for next cycle
+    last_error = error
+
+    # PID output
+    return p + i + d
+
+
+
 
 
 def ultrasonics_callback(msg):
     global forward_distance, right_distance, left_distance
-    # rospy.loginfo('got ultrasonic data')
     forward_distance = msg.data[0]
     right_distance = msg.data[1]
     left_distance = msg.data[2]
@@ -26,7 +56,6 @@ def ultrasonics_callback(msg):
 
 def yaw_callback(msg):
     global yaw
-    rospy.loginfo('got yaw data')
     yaw = msg.data
     rospy.loginfo("Yaw: %f", yaw)
 
@@ -40,6 +69,11 @@ def listener():
 def normalize_angle(angle):
     # Wrap angle to [-180, 180] degrees
     return ((angle + 180) % 360) - 180
+
+def normalize_yaw(angle):
+    """Keep yaw in [0, 360) degrees"""
+    return angle % 360
+
 
 def movement():
     global moved
@@ -55,7 +89,7 @@ def movement():
     # If obstacle ahead
 
     # sign = cv_signs.get_sign(detector)
-    if forward_distance < 5 and moved:
+    if forward_distance < 8 and moved:
         # if sign == "LEFT":
         #     turn_angle(90, cmd)
         # elif sign == "RIGHT":
@@ -65,7 +99,7 @@ def movement():
 
     else:
         moved = 1
-        cmd.linear.x = min(max_velocity, (forward_distance - 5) * kp_linear)
+        cmd.linear.x = min(max_velocity, (forward_distance - 8) * kp_linear)
         cmd.angular.z = 0
         pub.publish(cmd)
     
@@ -73,16 +107,19 @@ def movement():
 
 def turn_angle(rotation_angle, cmd):
     # Turn the robot by a relative angle
-    global target_yaw
+    global target_yaw, last_error, integral
     start_yaw = yaw
-    target_yaw = normalize_angle(start_yaw + rotation_angle) # try to snap angle here
+    target_yaw = normalize_yaw(start_yaw + rotation_angle) # try to snap angle here
     turn_rate = rospy.Rate(30) # reduce the turn rate if the imu is very noisy
+
+    last_error = 0
+    integral = 0
 
     error = normalize_angle(target_yaw - yaw)
     while not rospy.is_shutdown() and abs(error) > rotation_tolerance: # increase tolerance if it misses it
-        error_rad = math.radians(error)
-        p_rotation = error_rad * kp_angular # the p in pid
-        cmd.angular.z = p_rotation
+        control = pid_control(error)
+        control_rad = math.radians(control)
+        cmd.angular.z = control_rad
         cmd.linear.x = 0
         pub.publish(cmd)
         turn_rate.sleep()
